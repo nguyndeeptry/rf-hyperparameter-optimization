@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*.docx
+
+# Generated, not part of the deliverable
+results_quick/
+results/demo/
+
+# Archives and course handouts (not my own work)
+*.rar
+*.zip
+HUONG_DAN*.pdf
+DO_AN_MAU*.pdf

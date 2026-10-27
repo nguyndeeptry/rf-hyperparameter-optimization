@@ -1,0 +1,6 @@
+# Lower bounds. Exact versions used for the reported results are recorded in
+# results/<dataset>/run_meta.json (and pinned below after the final run).
+numpy>=1.26
+scikit-learn>=1.4
+optuna>=3.5
+matplotlib>=3.9
