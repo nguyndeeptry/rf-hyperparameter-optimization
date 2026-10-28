@@ -1,0 +1,4 @@
+method,n_seeds,test_acc_mean,test_acc_std,test_f1_mean,test_f1_std
+baseline,10,1.0,0.0,1.0,0.0
+random_search,10,1.0,0.0,1.0,0.0
+tpe,10,1.0,0.0,1.0,0.0

@@ -1,0 +1,3 @@
+method,n_trials_total,mean_n_estimators,mean_max_depth,mean_min_samples_split
+random_search,600,271.745,16.263333333333332,11.12
+tpe,600,207.91333333333333,17.738333333333333,10.765
