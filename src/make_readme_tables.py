@@ -48,10 +48,17 @@ def build():
 
     sens = read(config.results_dir("breast_cancer", create=False) / "sensitivity_table.csv")
     if sens:
-        rows = [[NAMES[r["method"]], r["budget"], f"{float(r['score_mean']):.4f} ± {float(r['score_std']):.4f}",
-                 f"{float(r['time_mean_sec']):.0f}"] for r in sens]
+        rows = [[NAMES[r["method"]], r["budget"], f"{float(r['score_mean']):.4f} ± {float(r['score_std']):.4f}"]
+                for r in sens]
         parts.append(f"**Sensitivity to the search budget** (breast_cancer, {sens[0]['n_seeds']} seeds)\n\n" + table(
-            ["Method", "Budget (trials)", "CV macro-F1 (mean ± std)", "Search time (s)"], rows))
+            ["Method", "Budget (trials)", "CV macro-F1 (mean ± std)"], rows))
+    for ds in config.SUPPORTED_DATASETS:
+        pt = read(config.results_dir(ds, create=False) / "paired_tests.csv")
+        if pt:
+            rows = [[f"{NAMES[r['method_a']]} vs {NAMES[r['method_b']]}", r["mean_diff_a_minus_b"],
+                     f"{r['a_wins']} / {r['ties']} / {r['a_losses']}", r["wilcoxon_p"]] for r in pt]
+            parts.append(f"**Paired comparison over seeds, CV macro-F1** ({ds}, {pt[0]['n_seeds']} seeds)\n\n" + table(
+                ["Comparison", "Mean difference", "Wins / ties / losses", "Wilcoxon p (unadjusted)"], rows))
     return "\n\n".join(parts) if parts else "_No results yet - run `python src/run_all.py`._"
 
 

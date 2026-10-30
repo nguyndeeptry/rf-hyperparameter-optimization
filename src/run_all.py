@@ -14,6 +14,8 @@ import analyze_sensitivity
 import compare_scalability
 import config
 import evaluate_test
+import make_dataset_figures
+import paired_tests
 import run_experiment
 import run_sensitivity
 
@@ -37,11 +39,14 @@ def main(argv=None):
         run_experiment.main(common + ["--trials", str(trials), "--seeds", str(seeds), "--resume"])
         evaluate_test.main(common)
         analyze.main(common)
+        paired_tests.main(common)
 
     run_sensitivity.main(["--dataset", "breast_cancer", "--seeds", str(sens_seeds), "--resume",
                           "--budgets"] + [str(b) for b in budgets])
     analyze_sensitivity.main(["--dataset", "breast_cancer"])
     compare_scalability.main()
+    if not args.quick:
+        make_dataset_figures.main()
     print("\nAll done. See the results/ folder.")
 
 

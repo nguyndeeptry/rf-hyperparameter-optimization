@@ -56,7 +56,7 @@ def main(argv=None):
             ax.bar(x + i * width, vals, width, yerr=errs, capsize=4, label=ds)
         ax.set_xticks(x + width / 2); ax.set_xticklabels(METHODS)
         ax.set_ylim(0.9, 1.01); ax.set_ylabel(title); ax.set_title(f"{title} by dataset (y-axis starts at 0.90)")
-        ax.legend(loc="lower right"); ax.grid(alpha=0.3, axis="y")
+        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2); ax.grid(alpha=0.3, axis="y")
     plt.tight_layout(); plt.savefig(out / "fig_scalability.png", dpi=150); plt.close()
     print(f"Saved -> {out}")
 
