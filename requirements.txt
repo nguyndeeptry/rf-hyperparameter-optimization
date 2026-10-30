@@ -1,6 +1,6 @@
-# Lower bounds. Exact versions used for the reported results are recorded in
-# results/<dataset>/run_meta.json (and pinned below after the final run).
-numpy>=1.26
-scikit-learn>=1.4
-optuna>=3.5
+# Pinned to the versions recorded in results/*/run_meta.json (Python 3.14.0, Windows 11).
+# matplotlib is not recorded there: run "pip show matplotlib" and pin it too if you want a fully frozen environment.
+numpy==2.5.4
+scikit-learn==1.9.1
+optuna==5.0.0
 matplotlib>=3.9
