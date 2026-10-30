@@ -1,0 +1,4 @@
+method_a,method_b,n_seeds,mean_diff_a_minus_b,a_wins,ties,a_losses,wilcoxon_p
+random_search,baseline,10,+0.00402,10,0,0,0.0020
+tpe,baseline,10,+0.00548,10,0,0,0.0020
+tpe,random_search,10,+0.00145,8,2,0,0.0078
