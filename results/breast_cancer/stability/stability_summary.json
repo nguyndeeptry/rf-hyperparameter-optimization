@@ -1,0 +1,29 @@
+{
+  "dataset": "breast_cancer",
+  "n_runs": 30,
+  "split_stability_mean_std": {
+    "baseline": 0.018036945358872528,
+    "random_search": 0.01765942419663306,
+    "tpe": 0.01807372320672055
+  },
+  "split_stability_mean_f1": {
+    "baseline": 0.9577227606166339,
+    "random_search": 0.9558266893123875,
+    "tpe": 0.9558978589883778
+  },
+  "validation_gap_mean": {
+    "baseline": 0.0020373436601883845,
+    "random_search": 0.004867346339398915,
+    "tpe": 0.007515560213326567
+  },
+  "validation_gap_abs_mean": {
+    "baseline": 0.003039151208377022,
+    "random_search": 0.0058594058639166,
+    "tpe": 0.007515560213326567
+  },
+  "n_seeds_per_method": {
+    "baseline": 10,
+    "random_search": 10,
+    "tpe": 10
+  }
+}

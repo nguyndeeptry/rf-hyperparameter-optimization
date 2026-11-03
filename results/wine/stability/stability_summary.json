@@ -1,0 +1,29 @@
+{
+  "dataset": "wine",
+  "n_runs": 30,
+  "split_stability_mean_std": {
+    "baseline": 0.02728101646157648,
+    "random_search": 0.026682874033940845,
+    "tpe": 0.02679820369119984
+  },
+  "split_stability_mean_f1": {
+    "baseline": 0.9779231745406196,
+    "random_search": 0.9790719708531149,
+    "tpe": 0.9780974467694403
+  },
+  "validation_gap_mean": {
+    "baseline": -0.016706544189920215,
+    "random_search": -0.009243992722253624,
+    "tpe": -0.008585644534493652
+  },
+  "validation_gap_abs_mean": {
+    "baseline": 0.016706544189920215,
+    "random_search": 0.009243992722253624,
+    "tpe": 0.008585644534493652
+  },
+  "n_seeds_per_method": {
+    "baseline": 10,
+    "random_search": 10,
+    "tpe": 10
+  }
+}

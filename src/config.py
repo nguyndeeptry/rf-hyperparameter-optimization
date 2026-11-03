@@ -67,3 +67,61 @@ def apply_common_args(args):
         N_TRIALS = args.trials
     if hasattr(args, "seeds"):
         SEEDS = list(range(args.seeds))
+
+
+# --------------------------------------------------------------------------- #
+# Stability validation settings (used by src/validate_stability.py)
+# --------------------------------------------------------------------------- #
+STABILITY_N_SPLITS = 5       # folds per repeat for RepeatedStratifiedKFold
+STABILITY_N_REPEATS = 5      # number of repeats -> 5x5 = 25 evaluations per config
+STABILITY_TOP_K = 5          # kept for CLI compatibility (no trial-level data)
+STABILITY_INNER_VAL_SIZE = 0.2   # inner validation split of the TRAIN set only
+
+
+# --------------------------------------------------------------------------- #
+# Validated baseline (per dataset)
+# --------------------------------------------------------------------------- #
+# The baseline is no longer the sklearn default: it is the configuration
+# selected by the stability validation step (lowest |validation gap| +
+# split-stability, among the three candidate methods).
+#
+# Regenerate with:
+#   python src/validate_stability.py --dataset <name>
+#   python src/pick_validated_baseline.py --dataset <name>
+#
+# Evidence files:
+#   results/<dataset>/stability/stability_summary.json
+# --------------------------------------------------------------------------- #
+VALIDATED_BASELINE = {
+    "breast_cancer": {
+        "source": "validated",
+        "method": "baseline",          # sklearn default won on this dataset
+        "config": {
+            "bootstrap": True,
+            "criterion": "gini",
+            "max_features": "sqrt",
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "n_estimators": 100,
+        },
+        "evidence": "results/breast_cancer/stability/stability_summary.json",
+    },
+    "wine": {
+        "source": "validated",
+        "method": "tpe",               # TPE won on wine
+        "config": {
+            "max_depth": 24,
+            "max_features": "log2",
+            "min_samples_split": 13,
+            "n_estimators": 103,
+        },
+        "evidence": "results/wine/stability/stability_summary.json",
+    },
+}
+
+
+def get_validated_baseline(dataset=None):
+    """Return the validated RF config for a dataset, or {} if not validated yet."""
+    ds = dataset or DATASET_NAME
+    block = VALIDATED_BASELINE.get(ds, {})
+    return dict(block.get("config", {}))
